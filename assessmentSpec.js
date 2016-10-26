@@ -24,7 +24,7 @@ describe("#multiplyEvenNumbers", function(){
 describe("#mode", function(){
   it("It returns the most frequent number in the array of numbers", function(){
     var arr = [1,2,3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5];
-    expect(mode(arr)).to.equal(4);
+    expect(mode(arr)).to.equal(3);
   });
 });
 
@@ -89,41 +89,41 @@ describe("Book", function(){
 
     beforeEach(function(){
         book = new Book('Eloquent JavaScript', 'Programming', 212, 'Marijn', 21);
-    })
+    });
 
     describe("#initializing", function(){
         it("has a title", function(){
             expect(book.hasOwnProperty('title')).to.equal(true);
             expect(book.title).to.equal('Eloquent JavaScript');
-        })
+        });
         it("has a genre", function(){
             expect(book.hasOwnProperty('genre')).to.equal(true);
             expect(book.genre).to.equal('Programming');
-        })
+        });
         it("has a page count", function(){
             expect(book.hasOwnProperty('pageCount')).to.equal(true);
             expect(book.pageCount).to.equal(212);
-        })
+        });
         it("has an author", function(){
             expect(book.hasOwnProperty('author')).to.equal(true);
             expect(book.author).to.equal('Marijn');
-        })
+        });
         it("has a number of chapters", function(){
             expect(book.hasOwnProperty('numChapters')).to.equal(true);
             expect(book.numChapters).to.equal(21);
-        })
-    })
+        });
+    });
     describe("#toString", function(){
         it('returns the a string with the name of the book, a colon and the number of pages', function(){
             expect(book.toString()).to.equal('Eloquent JavaScript: 212');
-        })
-    })
-    describe("#pagePerChapter", function(){
+        });
+    });
+    describe("#pagesPerChapter", function(){
         it('returns the average number of pages per chapter rounded to the nearest whole number', function(){
-            expect(book.pagePerChapter()).to.equal(10);
-        })
-    })
-})
+            expect(book.pagesPerChapter()).to.equal(10);
+        });
+    });
+});
 
 describe("Library", function(){
     var book;
@@ -137,38 +137,38 @@ describe("Library", function(){
         book2 = new Book('JavaScript the Good Parts', 'Programming', 212, 'Dougie', 21);
         book3 = new Book('Infinite Jest', 'Books I might never finish', 1075, 'David', 1);
         book4 = new Book('Eloquent JavaScript 2nd Edition', 'Programming', 252, 'Marijn', 20);
-        library = new Library('Rithm School Library', '3338 17th St', []);
-    })
+        library = new Library('Rithm School Library', '3338 17th St');
+    });
 
     describe("#initializing", function(){
         it("has a name", function(){
             expect(library.hasOwnProperty('name')).to.equal(true);
             expect(library.name).to.equal('Rithm School Library');
-        })
+        });
         it("has a location", function(){
             expect(library.hasOwnProperty('location')).to.equal(true)
             expect(library.location).to.equal('3338 17th St');
-        })
+        });
         it("has a list of books which is initialized as an empty array", function(){
             expect(library.hasOwnProperty('books')).to.equal(true);
             expect(library.books).to.deep.equal([]);
-        })
-    })
+        });
+    });
     describe("#addBook", function(){
         it("adds a single book to the array of books and returns the newly modified array", function(){
             expect(library.addBook(book)).to.deep.equal([book]);
-        })
+        });
         it("can accept an array of books as well and returns the newly modified array", function(){
             expect(library.addBook([book, book2, book3, book4])).to.deep.equal([book, book2, book3, book4]);
-        })
+        });
         // BONUS - implement these tests!
-        it("only adds objects created from the Book constructor function", function(){
+        it("BONUS: only adds objects created from the Book constructor function", function(){
 
-        })
-        it("does not add duplicates", function(){
+        });
+        it("BONUS: does not add duplicates", function(){
 
-        })
-    })
+        });
+    });
     describe("#listAuthors", function(){
         it("returns an array of the names of the authors for each book in the array of books", function(){
             library.addBook([book, book2, book3, book4]);
@@ -178,17 +178,17 @@ describe("Library", function(){
             library.addBook([book, book2, book3, book4]);
             expect(library.listAuthors(true)).to.deep.equal(['Marijn', 'Dougie', 'David']);
         });
-    })
+    });
     describe("#sumPages", function(){
         it("returns the total number of pages for each book in the array of books", function(){
             library.addBook([book, book2, book3, book4]);
             expect(library.sumPages()).to.equal(1751);
         });
-    })
+    });
     describe("#filterByAuthor", function(){
         it("returns an array of books that have the same name as the author parameter", function(){
             library.addBook([book, book2, book3, book4]);
             expect(library.filterByAuthor("Marijn")).to.deep.equal([book,book4]);
-        })
-    })
-})
+        });
+    });
+});
