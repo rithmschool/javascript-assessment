@@ -54,8 +54,9 @@ describe("#partition", function(){
 
 describe("#intersection", function(){
   it("It returns an array with the values that are the same in each array", function(){
-    var nestedArr = [[2,3,4], [1,2,3]];
-    expect(intersection(nestedArr)).to.deep.equal([2,3]);
+    var arr1 = [2,3,4];
+    var arr2 = [1,2,3];
+    expect(intersection(arr1,arr2)).to.deep.equal([2,3]);
   });
 });
 
@@ -93,7 +94,7 @@ describe("Book", function(){
     describe("#initializing", function(){
         it("has a title", function(){
             expect(book.hasOwnProperty('title')).to.equal(true);
-            expect(book.title).to.equal('Eloquent Javascript');
+            expect(book.title).to.equal('Eloquent JavaScript');
         })
         it("has a genre", function(){
             expect(book.hasOwnProperty('genre')).to.equal(true);
@@ -114,7 +115,7 @@ describe("Book", function(){
     })
     describe("#toString", function(){
         it('returns the a string with the name of the book, a colon and the number of pages', function(){
-            expect(book.toString()).to.equal('Eloquent Javascript: 212');
+            expect(book.toString()).to.equal('Eloquent JavaScript: 212');
         })
     })
     describe("#pagePerChapter", function(){
