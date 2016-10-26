@@ -146,7 +146,7 @@ describe("Library", function(){
             expect(library.name).to.equal('Rithm School Library');
         });
         it("has a location", function(){
-            expect(library.hasOwnProperty('location')).to.equal(true)
+            expect(library.hasOwnProperty('location')).to.equal(true);
             expect(library.location).to.equal('3338 17th St');
         });
         it("has a list of books which is initialized as an empty array", function(){
