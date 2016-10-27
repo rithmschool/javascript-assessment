@@ -100,6 +100,24 @@ function partition(array, callback){
 }
 
 
+function intersection(array1, array2){
+	var results=[];
+	array1.forEach(function(arr1Item,idx){
+		array2.forEach(function(arr2Item,dix){
+			if(arr1Item === arr2Item){
+				results.push(arr1Item);
+			}
+		});
+	});
+	return results;
+}
+
+
+
+
+
+
+
 
 
 
