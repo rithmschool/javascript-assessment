@@ -82,6 +82,26 @@ function compact(arrayOfTruth){
 
 
 
+function isEven(num){
+    return num % 2 === 0;
+}
+
+function partition(array, callback){
+	var trueArray=[];
+	var falseArray=[];
+	array.forEach(function(arrayItem,idx){
+		if(callback(arrayItem)){
+			trueArray.push(arrayItem);
+		} else {
+			falseArray.push(arrayItem);
+		}
+	});
+	return [trueArray, falseArray];
+}
+
+
+
+
 
 
 
