@@ -71,15 +71,14 @@ function capitalize(string){
 }
 
 
-
-
-
-
-
-
-
-
-
+function compact(arrayOfTruth){
+	return arrayOfTruth.reduce(function(acc, arrayItem, idx){
+		if(arrayItem){
+			acc.push(arrayItem);
+		}
+		return acc;
+	},[]);
+}
 
 
 
