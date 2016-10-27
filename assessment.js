@@ -40,3 +40,46 @@ function multiplyEvenNumbers(numArray) {
 		}
 	},1);
 }
+
+
+function mode(numArray){
+	var numberCount = {};
+	numArray.forEach(function(arrayItem,idx){
+		if(numberCount[arrayItem]===undefined){
+			numberCount[arrayItem]=1;
+		} else {
+			numberCount[arrayItem] = numberCount[arrayItem] + 1;
+		}
+	});
+	var largestCount=[];
+	for(var property in numberCount){
+		if(largestCount.length===0){
+			largestCount.push(property,numberCount[property]);
+		} else {
+			if(numberCount[property] > largestCount[1]){
+				largestCount[0] = property;
+				largestCount[1] = numberCount[property];
+			}
+		}
+	}
+	return parseInt(largestCount[0]);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
