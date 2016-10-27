@@ -31,3 +31,12 @@ function flipCase(string, letter){
 }
 
 
+function multiplyEvenNumbers(numArray) {
+	return numArray.reduce(function(acc, arrayItem, idx){
+		if(arrayItem%2===0){
+			return acc*arrayItem;
+		} else {
+		  return acc;
+		}
+	},1);
+}
