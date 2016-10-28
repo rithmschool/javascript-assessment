@@ -113,8 +113,23 @@ function intersection(array1, array2){
 }
 
 
+function subtract(a,b,c){
+    return a-b-c;
+}
+subtract(10,5,2); // 3
 
 
+function flip(){
+	var outsideArgs = [].slice.call(arguments);
+	console.log(outsideArgs);
+	outsideArgs.reverse();
+	return function returnedFunc(){
+		// return 
+	};
+}
+
+flipped = flip(subtract);
+flipped(10,5,2);
 
 
 
