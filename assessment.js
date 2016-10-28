@@ -142,9 +142,7 @@ function once(){
 	var callback = [].slice.call(arguments)[0];
 	var counter=0;
 	return function(){
-		if(counter>0){
-			return undefined;
-		} else {
+		if(counter===0){
 			counter++;
 			return callback.apply(this,arguments);
 		}
@@ -216,6 +214,24 @@ book5 = {
 library = new Library('Rithm School Library', '3338 17th St');
 
 library.addBook([book, book2, book3, book4, book5]);
+
+
+Library.prototype.listAuthors = function(noDuplicates){
+	return this.books.reduce(function(acc, arrayItem, idx){
+		if(noDuplicates){
+			if(acc.indexOf(arrayItem.author)===-1){
+				acc.push(arrayItem.author);
+			}
+		} else {
+			acc.push(arrayItem.author);
+		}
+		return acc;
+	},[]);
+};
+
+
+
+
 
 
 
