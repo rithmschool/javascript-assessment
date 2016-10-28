@@ -132,9 +132,29 @@ var flipped = flip(subtract);
 flipped(10,5,2);
 
 
-function once(){
+/////////////////////////////////////////////////////
 
+function add(a,b){
+	return a+b;
 }
+
+function once(){
+	var callback = [].slice.call(arguments)[0];
+	var counter=0;
+	return function(){
+		if(counter>0){
+			return undefined;
+		} else {
+			counter++;
+			return callback.apply(this,arguments);
+		}
+	};
+}
+
+var oneAddition = once(add);
+console.log(oneAddition(2,2));
+console.log(oneAddition(2,4));
+console.log(oneAddition(5,2));
 
 
 ////////////////////////////////////////////////////////
