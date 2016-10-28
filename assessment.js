@@ -35,16 +35,18 @@ function frequency(arr, searchTerm){
 
 
 
-function multiplyEvenNumbers(arr){
-	var evens = [];
-	for(var i=0; i < arr.length; i++){
-		if(arr[i] % 2 === 0){
-			evens.push(arr[i]);
-		}
-	}
-}
+// function multiplyEvenNumbers(arr){
+// 	arr.split("").reduce(function(start, next, idx, array){
+// 		if(start % 2 === 0){
+// 			if(next % 2 === 0){
+// 				return start * next;
+// 			}
+// 		}
 
-multiplyEvenNumbers([2,3,4,5,6]); 
+// 	});
+// }
+
+// multiplyEvenNumbers([2,3,4,5,6]); 
 
 
 
@@ -68,14 +70,14 @@ multiplyEvenNumbers([2,3,4,5,6]);
 // ************************************************************************
 
 
-function capitalize(str){
-    var toUpper = str[0].toUpperCase();
-    var capitalizedString = "";
-    for(var i = 1; i < str.length; i++){
-        capitalized
-    }
-}
-capitalize("gregory");
+// function capitalize(str){
+//     var toUpper = str[0].toUpperCase();
+//     var capitalizedString = "";
+//     for(var i = 1; i < str.length; i++){
+//         capitalized
+//     }
+// }
+// capitalize("gregory");
 
 
 
@@ -85,15 +87,15 @@ capitalize("gregory");
 
 
 
-function compact(arr){
-	var truthy = [];
-	for(var i=0; i < arr.length; i++){
-		if(arr[i] === true){
-			arr[i].push(truthy);
-		}
-	}
-	return truthy;
-}
+// function compact(arr){
+// 	var truthy = [];
+// 	for(var i=0; i < arr.length; i++){
+// 		if(arr[i] === true){
+// 			arr[i].push(truthy);
+// 		}
+// 	}
+// 	return truthy;
+// }
 
 
 // ************************************************************************
@@ -128,6 +130,8 @@ function compact(arr){
 // ***********************************************************************************************
 
 
+//BOOK
+
 function Book(title, genre, pageCount, author, numChapters){
     this.title = title;
     this.genre = genre;
@@ -154,10 +158,29 @@ Book.prototype.pagesPerChapter = function(){
 
 
 
+//Library
+
+function Library(name, location, books){
+    this.name = name;
+    this.location = location;
+    this.books = [];
+}
+
+var library1 = new Library("SF Public Library: Ortega Branch", "2700 Ortega St.", []);
+
+var library2 = new Library("East Greenwich Public Library", "46 Main St.", []);
 
 
 
+Library.prototype.addBook = function(val){
+	if(val instanceof Book){
+	this.books.push(val);
+	}
+	return this.books;
+};
 
+
+library1.addBook(theDarkTower);
 
 
 
