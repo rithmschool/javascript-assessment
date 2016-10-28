@@ -4,14 +4,9 @@
 // 							frequency
 // ************************************************************************
 
-function frequency(arr, searchTerm){
-	var counter = 0;
-	for(var i=0; i < arr.length; i++){
-		if(arr[i] === searchTerm){
-			counter++;
-		}
-	}
-	return counter;
+function capitalize(str){
+    var toUpper = str[0].toUpperCase();
+    return toUpper + str.slice(1);
 }
 
 
@@ -35,18 +30,7 @@ function frequency(arr, searchTerm){
 
 
 
-// function multiplyEvenNumbers(arr){
-// 	arr.split("").reduce(function(start, next, idx, array){
-// 		if(start % 2 === 0){
-// 			if(next % 2 === 0){
-// 				return start * next;
-// 			}
-// 		}
 
-// 	});
-// }
-
-// multiplyEvenNumbers([2,3,4,5,6]); 
 
 
 
@@ -70,15 +54,13 @@ function frequency(arr, searchTerm){
 // ************************************************************************
 
 
-// function capitalize(str){
-//     var toUpper = str[0].toUpperCase();
-//     var capitalizedString = "";
-//     for(var i = 1; i < str.length; i++){
-//         capitalized
-//     }
-// }
-// capitalize("gregory");
-
+function capitalize(str){
+    var toUpper = str[0].toUpperCase();
+    var capitalizedString = "";
+    for(var i = 1; i < str.length; i++){
+    return toUpper + str.slice(1);
+    }
+}
 
 
 // ************************************************************************
@@ -102,7 +84,13 @@ function frequency(arr, searchTerm){
 // 							flip										      ---------x		
 // ************************************************************************
 
+function subtract(a,b,c){
+    return a-b-c;
+}
 
+function flipped(){
+
+}
 
 
 
