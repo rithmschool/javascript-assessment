@@ -14,7 +14,27 @@ function capitalize(str){
 // 							flipCase										   ---------x
 // ************************************************************************
 
-
+function flipCase(str, letter){
+	var splitString = str.split("");
+	var returnedString = [];
+	var garbage = [];
+	for(var i = 0; i < splitString.length; i++){
+		if(splitString[i] === letter.toUpperCase){
+			garbage.push(splitString[i])
+		}
+		else if(splitString[i] !== letter){
+				returnedString.push(splitString[i])
+		} 
+		else if(splitString[i] === letter){
+			returnedString.push(splitString[i].toUpperCase());
+		}
+		else if(splitString[i] === letter.toUpperCase()){
+			returnedString.push(splitString[i].toLowerCase());
+		}
+	}
+	return returnedString.join("");
+}
+flipCase("Hardy har har", "h");
 
 
 
@@ -25,13 +45,20 @@ function capitalize(str){
 
 
 // ************************************************************************
-// 							multiplyEvenNumbers									---------x
+// 							multiplyEvenNumbers								
 // ************************************************************************
 
-
-
-
-
+function multiplyEvenNumbers(arr){
+	var evens = [];
+	for(var i=0; i<arr.length; i++){
+		if(arr[i] % 2 === 0){
+			evens.push(arr[i]);
+		}
+	}
+	return evens.reduce(function(start, next, idx, arr){
+		return start * next;
+	},1);
+}
 
 
 
@@ -46,11 +73,8 @@ function capitalize(str){
 
 
 
-
-
-
 // ************************************************************************
-// 							capitalize										   ---------x		
+// 							capitalize												
 // ************************************************************************
 
 
@@ -64,7 +88,7 @@ function capitalize(str){
 
 
 // ************************************************************************
-// 							compact											   ---------x		
+// 							compact													
 // ************************************************************************
 
 
@@ -80,6 +104,15 @@ function compact(arr){
 }
 
 
+
+
+// ************************************************************************
+// 							intersection											
+// ************************************************************************
+
+
+
+
 // ************************************************************************
 // 							flip										      ---------x		
 // ************************************************************************
@@ -88,8 +121,8 @@ function subtract(a,b,c){
     return a-b-c;
 }
 
-function flipped(){
-
+function flipped(subtract){
+	return subtract;
 }
 
 
@@ -135,11 +168,11 @@ var theDarkTower2 = new Book("The Drawing of the Three", "fantasy", "400", "Step
 var theDarkTower3 = new Book("The Waste Lands", "fantasy", "512", "Stephen King", "32");
 
 Book.prototype.toString = function(){
-	return this.title + (": ") + this.pageCount + (" pages");
+	return this.title + (": ") + this.pageCount;
 };
 
 Book.prototype.pagesPerChapter = function(){
-	return ("The average number of pages per chapter is " + Math.round(this.pageCount / this.numChapters) + " pages");
+	return Math.round(this.pageCount / this.numChapters);
 };
 
 
