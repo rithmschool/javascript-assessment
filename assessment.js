@@ -69,15 +69,15 @@ function capitalize(str){
 
 
 
-// function compact(arr){
-// 	var truthy = [];
-// 	for(var i=0; i < arr.length; i++){
-// 		if(arr[i] === true){
-// 			arr[i].push(truthy);
-// 		}
-// 	}
-// 	return truthy;
-// }
+function compact(arr){
+	var truthy = [];
+	for(var i=0; i < arr.length; i++){
+		if(arr[i]){
+			truthy.push(arr[i]);
+		}
+	}
+	return truthy;
+}
 
 
 // ************************************************************************
