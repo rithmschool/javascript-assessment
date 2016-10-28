@@ -230,7 +230,6 @@ Library.prototype.listAuthors = function(noDuplicates){
 };
 
 
-
 Library.prototype.sumPages = function(){
 	return this.books.reduce(function(acc, arrayItem, idx){
 		return acc+arrayItem.pageCount;
@@ -238,6 +237,14 @@ Library.prototype.sumPages = function(){
 };
 
 
+Library.prototype.filterByAuthor = function(author){
+	return this.books.reduce(function(acc, arrayItem, idx){
+		if(arrayItem.author===author){
+			acc.push(arrayItem);
+		}
+		return acc;
+	},[]);
+};
 
 
 
