@@ -118,18 +118,86 @@ function subtract(a,b,c){
 }
 subtract(10,5,2); // 3
 
-
 function flip(){
-	var outsideArgs = [].slice.call(arguments);
-	console.log(outsideArgs);
-	outsideArgs.reverse();
-	return function returnedFunc(){
-		// return 
-	};
+	var callback = [].slice.call(arguments)[0];
+	function returnedFunc() {
+		var outerArgs = [].slice.call(arguments);
+		outerArgs.reverse();
+		return callback.apply(this, outerArgs);
+	}
+	return returnedFunc;
 }
 
-flipped = flip(subtract);
+var flipped = flip(subtract);
 flipped(10,5,2);
+
+
+function once(){
+
+}
+
+
+////////////////////////////////////////////////////////
+// Part 2
+
+function Book(title, genre, pageCount, author, numChapters){
+	this.title = title;
+	this.genre = genre;
+	this.pageCount = pageCount;
+	this.author = author;
+	this.numChapters = numChapters;
+}
+
+Book.prototype.toString = function(){
+	return this.title+": "+this.pageCount;
+};
+
+Book.prototype.pagesPerChapter = function(){
+	return Math.round(this.pageCount/this.numChapters);
+};
+
+
+function Library(name, location){
+	this.name = name;
+	this.location = location;
+	this.books = [];
+}
+
+Library.prototype.addBook = function(booksToAdd){
+	if(Array.isArray(booksToAdd)){
+		_this = this;
+		booksToAdd.forEach(function(arrayItem,idx){
+			if(_this.books.indexOf(arrayItem)===-1){
+				if(arrayItem.constructor === Book){
+					_this.books.push(arrayItem);
+				}
+			}
+		});
+	} else {
+		if(booksToAdd.constructor === Book){
+			this.books.push(booksToAdd);
+		} 
+	}
+	return this.books;
+};
+
+book = new Book('Eloquent JavaScript', 'Programming', 212, 'Marijn', 21);
+book2 = new Book('JavaScript the Good Parts', 'Programming', 212, 'Dougie', 21);
+book3 = new Book('Infinite Jest', 'Books I might never finish', 1075, 'David', 1);
+book4 = new Book('Eloquent JavaScript 2nd Edition', 'Programming', 252, 'Marijn', 20);
+book5 = {
+	title: "Actionscript Animation",
+	genre: "Programming",
+	pageCount: 300,
+	author: "Keith Peters",
+	numChapters: 15
+};
+
+library = new Library('Rithm School Library', '3338 17th St');
+
+library.addBook([book, book2, book3, book4, book5]);
+
+
 
 
 
