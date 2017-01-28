@@ -31,29 +31,6 @@ function multiplyEvenNumbers (arr) {
     })
 }
 
-// function mode (arr) {
-//     var arr = arr.sort();
-//     var mode = arr[0];
-//     var modeCount = 1;
-//     var current = arr[0];
-//     var counter = 1;
-//     for (var i = 1; i < arr.length; i++) {
-//         if (arr[i] === current) {
-//             counter += 1;
-//         } else if (!arr[i] === current) {
-//             counter = 1;
-//             current = arr[i];
-//         } if (counter > modeCount) {
-//             mode = arr[i];
-//             modeCount = counter;
-//         }
-//     }
-//     return mode;
-// }
-
-// var arr = [1,2,3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5]
-
-// mode(arr)
 
 function mode (arr) {
     var arrObj = {};
@@ -140,68 +117,46 @@ function Book (title, genre, pageCount, author, numChapters) {
 }
 
 
-
-// function Library (name, location) {
-//     this.name = name,
-//     this.location = location,
-//     this.books = [],
-//     this.addBook = function(bookOrArray) {
-//         if (Array.isArray(bookOrArray)) {
-//             for (i=0;i<bookOrArray.length;i++) {
-//                 this.books.push(bookOrArray[i])
-//             }
-//         } else {  
-//            this.books.push(bookOrArray)
-//            return this.books;
-//         }
-//      }
-    
-//     this.listAuthors = function() {
-//         var authors = [];
-//         books = this.books;
-//         for (var i = 0; i < books.length; i++) {
-//             authors.push(books[i][4])
-//         }
-//         return authors;
-//     }
-//     this.sumPages = function() {
-//         var pages = 0
-//         var books = this.books
-//         for (var i =0;i < books.length; i++) {
-//             pages += books[i].pagesPerChapter
-//         }
-//         i = 3
-//         var test = books[i].pagesPerChapter;
-//         return test 
-//     }
-// }
-
-
-
 function Library (name, location) {
     this.name = name,
     this.location = location,
     this.books = [],
     this.addBook = function(bookOrArray) {
-        
+        if (Array.isArray(bookOrArray)) {
+            this.books =  this.books.concat(bookOrArray);
+            return this.books;
+     } else {
+        this.books.push(bookOrArray);
+        return this.books;
      }
-    
-    this.listAuthors = function() {
+    }, 
+    this.listAuthors = function(unique) {
         var authors = [];
-        books = this.books;
-        for (var i = 0; i < books.length; i++) {
-            authors.push(books[i][4])
-        }
+        var books = this.books;
+        if (unique) {
+            books.forEach(function(val, i) {
+                if (!authors.includes(val.author)) {
+                    authors.push(books[i].author)
+                }
+             });
+        } else {
+            books.forEach(function(val, i) {
+            authors.push(books[i].author)
+            });
+        };
         return authors;
-    }
+        },
     this.sumPages = function() {
-        var pages = 0
-        var books = this.books
-        for (var i =0;i < books.length; i++) {
-            pages += books[i].pagesPerChapter
-        }
-        i = 3
-        var test = books[i].pagesPerChapter;
-        return test 
+        var pages = 0;
+        var books = this.books;
+        books.forEach(function (val, i) {
+            pages += (books[i].pageCount);
+        });
+        return pages;
+        },
+    this.filterByAuthor = function(searchTerm) {
+        return this.books.filter(function (val) {
+            return val.author === searchTerm;
+        })
     }
-}
+    }
