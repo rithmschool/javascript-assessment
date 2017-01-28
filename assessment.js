@@ -1,4 +1,4 @@
-// Write your solutions here:
+// Write your solutions here: /// ** All the tests pass now! Woohoo!
 
 function frequency(arr, key) {
     var count = 0;
@@ -11,15 +11,13 @@ function frequency(arr, key) {
 }
 
 
-// I feel like I'm close, but moved on in the essence of time
 function flipCase(string, key) {
     var letter = key.toLowerCase();
     var arr = Array.from(string);
     for (var i = 0; i < arr.length; i++) {
         if (arr[i] === letter.toUpperCase()) {
             arr[i] = arr[i].toLowerCase();
-        }
-        if (arr[i] === letter) {
+        } else if (arr[i] === letter) {
             arr[i] = arr[i].toUpperCase();
         }
     }
@@ -41,15 +39,22 @@ function multiplyEvenNumbers(array) {
 }
 
 
-// function mode(array){
-// 	var numberCounter = {};
-// 	// loop over array and put letter counter in new object
-// 	for(var i = 0; i < array.length; i++)
-// 		if(numberCounter.array[i])
-// 	}
-// 	// loop over object to find the one with the highest key, return value
+function mode(array) {
+    var numberCounter = {};
+    var maxKey = array[0];
+    var maxValue = 1;
+    for (var i = 0; i < array.length; i++) {
+        if(numberCounter[array[i]]){
+        numberCounter[array[i]]++;
+        } else {numberCounter[array[i]] = 1}
+        if (numberCounter[array[i]] > maxValue) {
+            maxKey = array[i];
+            maxValue = numberCounter[array[i]];
+        }
+    }
+    return maxKey;
+}
 
-// }
 
 
 function capitalize(string) {
@@ -136,23 +141,32 @@ function Library(name, location, books) {
     this.books = [];
 }
 
-// Something's up here
+
 Library.prototype.addBook = function(bookTitles) {
-    if (typeof bookTitles === "string") {
-        this.books.push(bookTitles);
+    if (Array.isArray(bookTitles)) {
+        this.books.push(...bookTitles);
     } else {
-        this.books.push(...bookTitles)
+        this.books.push(bookTitles)
     }
     return this.books;
 }
 
 
-Library.prototype.listAuthors = function() {
+
+Library.prototype.listAuthors = function(uniqueOnly) {
+    if (uniqueOnly) {
+        var authorsArray = [];
+        for (var i = 0; i < this.books.length; i++) {
+            if (authorsArray.indexOf(this.books[i].author) === -1) {
+                authorsArray.push(this.books[i].author)
+            }
+        }
+        return authorsArray;
+    }
+
     var authorsArray = [];
     for (var i = 0; i < this.books.length; i++) {
-        for (titles in this.books[i]) {
-            authorsArray.push(this.books[i].author)
-        }
+        authorsArray.push(this.books[i].author)
     }
     return authorsArray;
 
@@ -161,9 +175,8 @@ Library.prototype.listAuthors = function() {
 Library.prototype.sumPages = function() {
     var total = 0;
     for (var i = 0; i < this.books.length; i++) {
-        for (titles in this.books[i]) {
-            total += this.books[i].pageCount
-        }
+
+        total += this.books[i].pageCount
     }
     return total;
 }
@@ -173,12 +186,9 @@ Library.prototype.sumPages = function() {
 Library.prototype.filterByAuthor = function(author) {
     var authorBooks = [];
     for (var i = 0; i < this.books.length; i++) {
-        for (titles in this.books[i]) {
-            if (this.books[i].author === author) {
-                authorBooks.push(titles)
-            }
+        if (this.books[i].author === author) {
+            authorBooks.push(this.books[i])
         }
-
     }
-
+    return authorBooks;
 }
