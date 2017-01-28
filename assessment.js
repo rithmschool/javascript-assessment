@@ -31,29 +31,48 @@ function multiplyEvenNumbers (arr) {
     })
 }
 
+// function mode (arr) {
+//     var arr = arr.sort();
+//     var mode = arr[0];
+//     var modeCount = 1;
+//     var current = arr[0];
+//     var counter = 1;
+//     for (var i = 1; i < arr.length; i++) {
+//         if (arr[i] === current) {
+//             counter += 1;
+//         } else if (!arr[i] === current) {
+//             counter = 1;
+//             current = arr[i];
+//         } if (counter > modeCount) {
+//             mode = arr[i];
+//             modeCount = counter;
+//         }
+//     }
+//     return mode;
+// }
+
+// var arr = [1,2,3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5]
+
+// mode(arr)
+
 function mode (arr) {
-    var arr = arr.sort();
-    var mode = arr[0];
-    var modeCount = 1;
-    var current = arr[0];
-    var counter = 1;
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] === current) {
-            counter += 1;
-        } else if (!arr[i] === current) {
-            counter = 1;
-            current = arr[i];
-        } if (counter > modeCount) {
-            mode = arr[i];
-            modeCount = counter;
+    var arrObj = {};
+    arr.forEach(function(val) {
+        if (arrObj[val] === undefined) {
+            arrObj[val] = 0;
+        }
+        arrObj[val] += 1;
+    });
+    var ans = 0;
+    var count = 0;
+    for (var key in arrObj) {
+        if (arrObj[key] > count) {
+            ans = key;
+            count = arrObj[key];
         }
     }
-    return mode;
+    return Number(ans);
 }
-
-var arr = [1,2,3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5]
-
-mode(arr)
 
 
 function capitalize (string) {
