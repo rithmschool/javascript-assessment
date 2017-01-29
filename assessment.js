@@ -132,25 +132,50 @@ function Book(title, genre, pageCount, author, numChapters) {
 }
 
 
-/*function Library(name, location) {
+function Library(name, location) {
     this.name = name;
     this.location = location;
     this.books = [];
-    this.addBook = function (book) {
-        if (book instanceof Book) {
-            if (Array.isArray(book))
-
-                for (let i = 0; i < book.length; i++) {
-                this.books.push(book[i]);
-            }
+    this.authors = [];
+    this.filterByAuthor = function (target) {
+        return this.books.filter(function (book) {
+            return book.author === target;
+        })
+    }
+    this.sumPages = function () {
+        return this.books.map(function (book) {
+            return book.pageCount;
+        }).reduce(function (acc, next) {
+            return acc += next;
+        });
+    }
+    this.listAuthors = function (bool) {
+        for (var i = 0; i < this.books.length; i++) {
+            this.authors.push(this.books[i].author);
         }
-        if (this.books.indexOf(book) === -1) {
+        if (typeof (bool) === "boolean" && bool) {
+            var sorted = this.authors.sort();
+            return sorted.reduce(function (acc, next) {
+                if (acc !== next) {
+                    acc.push(next);
+                }
+                return acc;
+            }, [])
+        }
+        return this.authors;
+    }
+    this.addBook = function (book) {
+        //if book is a Book
+        if (book instanceof Book && !Array.isArray(book) && this.books.indexOf(book) === -1) {
             this.books.push(book);
+            return this.books;
+        } else if (Array.isArray(book)) {
+            for (let i = 0; i < book.length; i++) {
+                if (this.books.indexOf(book[i]) === -1 && book[i] instanceof Book) {
+                    this.books.push(book[i]);
+                }
+            }
             return this.books;
         }
     }
-
-    this.listAuthors = function () {
-
-    }
-}*/
+}
