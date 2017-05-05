@@ -72,7 +72,7 @@ partition(["a","b","b","c"], function(letter){
 
 ### `intersection`
 
-This function should accept a two dimensional array and return an array with the values that are the same in each array.
+This function should accept two arrays and return an array with the values that are the same in each array.
 
 ```js
 intersection([1,2,3], [2,3,4]); // [2,3]
