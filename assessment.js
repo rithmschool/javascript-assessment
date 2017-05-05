@@ -124,8 +124,15 @@ function Library(name, location){
 	this.books = [];
 }
 
-Library.prototype.addBook = function(arr){
-	return this.books = this.books.concat(arr);
+Library.prototype.addBook = function(arg){
+	if(Array.isArray(arg)){
+		for(var i = 0; i < arg.length; i++){
+			if(arg[i] instanceof Book) this.books.push(arg[i]);
+		}
+	} else {
+		if(arg instanceof Book) this.books = this.books.concat(arg);
+	}
+	return this.books
 }
 
 Library.prototype.listAuthors = function(arg){
