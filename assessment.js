@@ -55,9 +55,7 @@ function mode(arr) {
    return +maxKey;
 }
 
-function capitalize(str) {
-  return `${str[0].toUpperCase()}${str.slice(1)}`
-}
+capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
 function compact(arr) {
   return arr.filter(function(el) {
@@ -92,21 +90,21 @@ function intersection(arr1,arr2) {
   return arr3;
 }
 
-function flip(fn, thisArg) {
+function flip(fn) {
    return function(...innerArgs) {
-      innerArgs = innerArgs.reverse();
-        return fn.apply(thisArg, innerArgs);
+      innerArgs.reverse();
+        return fn(...innerArgs);
     }
 }
 
-function once(fn, thisArg) {
+function once(fn) {
   let counter = 0;
+  //rest oeprator - make arguments to an array
     return function(...innerArgs) {
       counter ++;
       if (counter === 1) {
-        return fn.apply(thisArg, innerArgs)
-      } else {
-          return undefined;
+        return fn(...innerArgs);
+        //return fn(...args); - spread to comma-separated arguments
       }
     }
 }
@@ -128,30 +126,51 @@ Book.prototype.pagesPerChapter = function() {
   return Math.floor(this.pageCount / this.numChapters);
 }
 
-function Library(name, location, books) {
+function Library(name, location) {
   this.name = name;
   this.location = location;
   this.books = [];
 }
 
 Library.prototype.addBook = function(newbooks) {
+
   if (Array.isArray(newbooks)) {
     let newStatus = this.books.concat(newbooks);
-    return newStatus;
+    this.books = newStatus;
+    return this.books;
   } else {
     this.books.push(newbooks);
     return this.books;
   }
+
 }
 
-Library.prototype.listAuthors = function() {
-  var names = [];
-  for (var i = 0; i < this.books.length; i++) {
-    for (var key in this.books[i]) {
-      if (key === this.author) {
-        names.push(this.books[key]);
-      }
-    }
+Library.prototype.listAuthors = function(unique) {
+
+  if (unique) {
+    return this.books.reduce(function(prev, next) {
+        if (!prev.includes(next.author)) {
+            prev.push(next.author);
+        }
+        return prev;
+    }, []);
   }
-  return names;
+
+  return this.books.map(function(book){
+       return book.author;
+  });
+
+}
+
+Library.prototype.sumPages = function() {
+  return this.books.reduce(function(prev, next) {
+    prev += next.pageCount;
+    return prev;
+  },0);
+}
+
+Library.prototype.filterByAuthor = function(author) {
+  return this.books.filter(function(book) {
+    return book.author === author;
+  });
 }
