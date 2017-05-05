@@ -9,7 +9,7 @@ In this part you will be implementing the following functions in the `assessment
 This function accepts an array and a searchTerm (this will always be a primitive value) and returns the number of times the searchTerm appears in the array.
 
 ```js
-frequency([1,2,3,4,4,4], 4); // 4
+frequency([1,2,3,4,4,4], 4); // 3
 frequency([true, false, true, true], false); // 1
 ```
 
@@ -72,7 +72,7 @@ partition(["a","b","b","c"], function(letter){
 
 ### `intersection`
 
-This function should accept a two dimensional array and return an array with the values that are the same in each array.
+This function should accept two arrays and return an array with the values that are the same in each array.
 
 ```js
 intersection([1,2,3], [2,3,4]); // [2,3]
