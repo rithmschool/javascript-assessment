@@ -8,27 +8,40 @@ function frequency(arr, key){
 	return counter;
 }
 
-
 function flipCase(str, char){
-	var string = ''
-	for(var i = 0; i < str.length; i++){
-		if(str[i] === char.toLowerCase()){
-			string += str[i].toUpperCase();
-		} else if(str[i] === char.toUpperCase()){
-			string += str[i].toLowerCase();
-		} else {
-			string += str[i];
-		}
+	if(str.length === 0) return '';
+	if(str[0] === char.toLowerCase()){
+		return str[0].toUpperCase() + flipCase(str.slice(1), char);
+	} else if(str[0] === char.toUpperCase()){
+		return str[0].toLowerCase() + flipCase(str.slice(1), char);
+	} else {
+		return str[0] + flipCase(str.slice(1), char);
 	}
-	return string;
+	// var string = ''
+	// for(var i = 0; i < str.length; i++){
+	// 	if(str[i] === char.toLowerCase()){
+	// 		string += str[i].toUpperCase();
+	// 	} else if(str[i] === char.toUpperCase()){
+	// 		string += str[i].toLowerCase();
+	// 	} else {
+	// 		string += str[i];
+	// 	}
+	// }
+	// return string;
 }
 
 function multiplyEvenNumbers(arr){
-	var multi = 1;
-	for(var i = 0; i < arr.length; i++){
-		if(arr[i] % 2 === 0) multi *= arr[i];
+	if(arr.length === 0) return 1;
+	if(arr[0] % 2 === 0){
+		return arr[0] * multiplyEvenNumbers(arr.slice(1));
+	} else {
+		return multiplyEvenNumbers(arr.slice(1));
 	}
-	return multi;
+	// var multi = 1;
+	// for(var i = 0; i < arr.length; i++){
+	// 	if(arr[i] % 2 === 0) multi *= arr[i];
+	// }
+	// return multi;
 }
 
 function mode(arr){
@@ -54,11 +67,10 @@ function capitalize(string){
 
 
 function compact(arr){
-	var newArray = [];
-	for(var i = 0; i < arr.length; i++){
-		if(arr[i]) newArray.push(arr[i]);
-	}
-	return newArray;
+	return arr.reduce(function(prev,next){
+		if(next) prev.push(next);
+		return prev;
+	}, []);
 }
 
 function partition(arr, fn){
@@ -69,14 +81,12 @@ function partition(arr, fn){
 }
 
 function intersection(arr1, arr2){
-	var newArray = [];
-
-	for(var i = 0; i < arr1.length; i++){
-		for(var j = 0; j < arr2.length; j++){
-			if(arr1[i] === arr2[j]) newArray.push(arr1[i]);
+	return arr1.reduce(function(prev, next, index){
+		for(var i = 0; i  < arr2.length; i++){
+			if(next === arr2[i+1]) prev.push(arr1[i]);
 		}
-	}
-	return newArray;
+		return prev;
+	}, []);
 }
 
 function flip(fn){
