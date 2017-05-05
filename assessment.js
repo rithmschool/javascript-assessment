@@ -3,9 +3,7 @@
 function frequency(arr, key){
 	var counter = 0;
 	for(var i = 0; i < arr.length; i++){
-		if(arr[i] === key){
-			counter++
-		}
+		if(arr[i] === key) counter++;
 	}
 	return counter;
 }
@@ -28,9 +26,7 @@ function flipCase(str, char){
 function multiplyEvenNumbers(arr){
 	var multi = 1;
 	for(var i = 0; i < arr.length; i++){
-		if(arr[i] % 2 === 0){
-			multi *= arr[i];
-		}
+		if(arr[i] % 2 === 0) multi *= arr[i];
 	}
 	return multi;
 }
@@ -38,11 +34,7 @@ function multiplyEvenNumbers(arr){
 function mode(arr){
 	var newObj = {};
 	for(var i = 0; i < arr.length; i++){
-		if(newObj[arr[i]]){
-			newObj[arr[i]]++;
-		} else {
-			newObj[arr[i]] = 1;
-		}
+		newObj[arr[i]] = (newObj[arr[i]] || 1) + 1;
 	}
 	var max = 0;
 	var item;
@@ -64,20 +56,14 @@ function capitalize(string){
 function compact(arr){
 	var newArray = [];
 	for(var i = 0; i < arr.length; i++){
-		if(arr[i]){
-			newArray.push(arr[i]);
-		}
+		if(arr[i]) newArray.push(arr[i]);
 	}
 	return newArray;
 }
 
 function partition(arr, fn){
 	return arr.reduce(function(prev, next){
-		if(fn(next)){
-			prev[0].push(next);
-		} else {
-			prev[1].push(next);
-		}
+		fn(next) ? prev[0].push(next) : prev[1].push(next);
 		return prev;
 	}, [[],[]]);
 }
@@ -87,9 +73,7 @@ function intersection(arr1, arr2){
 
 	for(var i = 0; i < arr1.length; i++){
 		for(var j = 0; j < arr2.length; j++){
-			if(arr1[i] === arr2[j]){
-				newArray.push(arr1[i]);
-			}
+			if(arr1[i] === arr2[j]) newArray.push(arr1[i]);
 		}
 	}
 	return newArray;
@@ -97,8 +81,7 @@ function intersection(arr1, arr2){
 
 function flip(fn){
 	return function(...arr){
-		var reverse = arr.reverse();
-		return fn.apply(fn, reverse);
+		return fn.apply(fn, arr.reverse());
 	}
 }
 
@@ -141,19 +124,11 @@ Library.prototype.addBook = function(arr){
 
 Library.prototype.listAuthors = function(arg){
 	var authors = [];
-	//push in first book
-	authors.push(this.books[0].author);
-	var counter = 0;
-
-	for(var i = 1; i < this.books.length; i++){
+	for(var i = 0; i < this.books.length; i++){
 		if(arguments[0] === true){
-			for(var j = 0; j < authors.length; j++){
-				if(authors[j] === this.books[i].author) counter ++;
+			if(!authors.includes(this.books[i].author)){
+				authors.push(this.books[i].author);	
 			}
-			if(counter === 0){
-				authors.push(this.books[i].author);
-			}
-			counter = 0;
 		} else {
 			authors.push(this.books[i].author);
 		}
@@ -173,9 +148,7 @@ Library.prototype.sumPages = function (){
 Library.prototype.filterByAuthor = function(auth){
 	var arr = [];
 	for(var i = 0; i < this.books.length; i++){
-		if(this.books[i].author === auth){
-			arr.push(this.books[i]);
-		}
+		if(this.books[i].author === auth) arr.push(this.books[i]);
 	}
 	return arr;
 }
