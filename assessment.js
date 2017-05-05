@@ -32,11 +32,7 @@ function flipCase(str, char){
 
 function multiplyEvenNumbers(arr){
 	if(arr.length === 0) return 1;
-	if(arr[0] % 2 === 0){
-		return arr[0] * multiplyEvenNumbers(arr.slice(1));
-	} else {
-		return multiplyEvenNumbers(arr.slice(1));
-	}
+	return arr[0] % 2 === 0 ?  arr[0] * multiplyEvenNumbers(arr.slice(1)) : multiplyEvenNumbers(arr.slice(1));
 	// var multi = 1;
 	// for(var i = 0; i < arr.length; i++){
 	// 	if(arr[i] % 2 === 0) multi *= arr[i];
