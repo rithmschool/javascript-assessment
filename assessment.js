@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////
 //// Shriya Nevatia Javascript Assessment - Fri May 5 /////
-///////// Had to look up info for flip(), once(), /////////
+//////// Have to look up info for flip(), once(), /////////
 //// and BONUS that objects are from Book constructor /////
 ////////// more details noted by those functions //////////
 //////// everything else did "the right way", haha ////////
@@ -116,7 +116,6 @@ function intersection(arr1, arr2) {
 ///////////////////////////////////////////////////////////
 // for these two, I had to look up call/apply/bind rules //
 // I wrote everything I remembered in the comments copy ///
-//////// above the working/solved function below it ///////
 ///////////////////////////////////////////////////////////
 
 // *** flip attempt ***
