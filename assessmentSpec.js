@@ -166,7 +166,8 @@ describe("Library", function(){
 
         });
         it("BONUS: does not add duplicates", function(){
-
+            library.addBook(book);
+            expect(library.checkUnique(book)).to.equal(false);
         });
     });
     describe("#listAuthors", function(){
