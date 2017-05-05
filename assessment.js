@@ -3,13 +3,12 @@
 //Part 1
 
 function frequency(array,term) {
-	var counter = 0;
-	array.forEach(function(value) {
+	return array.reduce(function(acc,value) {
 		if (value === term) {
-			counter++;
+			acc++;
 		}
-	})
-	return counter;
+		return acc;
+	},0)
 }
 
 function flipCase(string, value) {
@@ -20,18 +19,16 @@ function flipCase(string, value) {
 		return string[0].toLowerCase() + flipCase(string.substring(1), value);
 	} else if (string[0] === value.toLowerCase()) {
 		return string[0].toUpperCase() + flipCase(string.substring(1), value);
-	} else {
-		return string[0] + flipCase(string.substring(1), value);
 	}
+	return string[0] + flipCase(string.substring(1), value);
 }
 
 function multiplyEvenNumbers(array) {
 	return array.reduce(function(acc,value) {
 		if (value % 2 === 0) {
 			return acc * value;
-		} else {
-			return acc;
-		}
+		} 
+		return acc;
 	}, 1)
 }
 
@@ -40,11 +37,7 @@ function mode(array) {
 	var highCounter = 0;
 	var highNum = 0;
 	array.forEach(function(value) {
-		if (holdingObj[value] === undefined) {
-			holdingObj[value] = 1;
-		} else {
-			holdingObj[value]++;
-		}
+		holdingObj[value] === undefined ? holdingObj[value] = 1 : holdingObj[value]++;
 	})
 	for (var prop in holdingObj) {
 		if (holdingObj[prop] > highCounter) {
@@ -90,12 +83,12 @@ function flip(fn) {
 }
 
 function once(fn) {
-	let counter = 1;
+	let counter = false;
 	return function(...args) {
-		if (counter === 0) {
+		if (counter) {
 			return undefined;
 		} else {
-			counter--;
+			counter = true;
 			return fn.apply(this,args);
 		}
 	}
@@ -128,11 +121,10 @@ function Library (name, location) {
 Library.prototype.addBook = function(value) {
 	if (Array.isArray(value)) {
 		this.books = this.books.concat(value);
-		return this.books
 	} else {
 		this.books.push(value);
-		return this.books;
 	}
+	return this.books;
 }
 
 Library.prototype.listAuthors = function(value) {
@@ -145,10 +137,8 @@ Library.prototype.listAuthors = function(value) {
 		return this.books.reduce(function(acc,value) {
 			if(acc.indexOf(value.author) === -1) {
 				acc.push(value.author);
-				return acc;
-			} else {
-				return acc;
 			}
+			return acc;
 		},[])
 	}
 }
