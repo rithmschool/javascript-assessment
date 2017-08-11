@@ -33,28 +33,79 @@ function multiplyEvenNumbers(arr) {
 
 
 function mode(arr) {
-	var obj = {};
+	var sArr = arr.sort((a,b) => (a > b));
+
 	var count = 0;
-	for(var i=0; i<arr.length; i++) {
-		if (!(arr[i] in obj)) {
-			obj[arr[i]] = 1;
+	var max = 0;
+	var retNum = 0;
+	for(var i=0; i<arr.length-1; i++) {
+		if(arr[i] === arr[i+1])
+			count++;
+		else {
+			if(count > max) {
+				max = count;
+				retNum = arr[i];
+			}
+			count = 0;
 		}
 	}
+	return retNum;
 }
 
 function capitalize(str) {
 	return str[0].toUpperCase() + str.slice(1);
 }
 
-// function flip(fn) {
-// 	var args = [].slice.call(fn.arguments);
+function compact(arr) {
+    var rArr = [];
+    for(var i=0; i<arr.length; i++) {
+        if(arr[i]) {
+            rArr.push(arr[i]);
+        }
+    }
+    return rArr;
+}
 
-// }
+function partition(arr, cb) {
+    var arr1 = [];
+    var arr2 = [];
+    var arr3 = [];
+    for(var i=0; i<arr.length; i++) {
+        if(cb(arr[i])) {
+            arr1.push(arr[i]);
+        }
+        else {
+            arr2.push(arr[i]);
+        }
+    }
+    arr3.push(arr1);
+    arr3.push(arr2);
+    return arr3;
+}
 
-// function once(fn) {
-// 	var count = 0;
-// 	//if(fn)
-// }
+function flip(fn) {
+
+}
+
+function once(fn) {
+	var count = 0;
+	var _this = this;
+	return function(...args) {
+		if(_this(..args)) {
+			count++;
+		}
+	}
+}
+
+function intersection(arr1, arr2) {
+	var rArr = [];
+	for(var i=0; i<arr1.length; i++) {
+		if(arr2.includes(arr1[i])) {
+			rArr.push(arr1[i]);
+		}
+	}
+	return rArr;
+}
 
 function Book(title, genre, pageCount, author, numChapters) {
 	this.title = title;
@@ -109,17 +160,20 @@ Library.prototype.listAuthors = function(b) {
 	return rArr;
 }
 
-Library.prototype.sumPages = function(b) {
-	
+Library.prototype.sumPages = function() {
+	var total = 0;
+	for(var i=0; i<this.books.length; i++) {
+		total += this.books[i].pageCount;
+
+	}
+	return total;
 }
 
 Library.prototype.filterByAuthor = function(b) {
-	
+	var rArr = [];
+	for(var i=0; i<this.books.length; i++) {
+		if(this.books[i].author === b)
+			rArr.push(this.books[i]);
+	}
+	return rArr;
 }
-
-
-
-
-
-
-
