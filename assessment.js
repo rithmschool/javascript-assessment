@@ -87,15 +87,15 @@ function flip(fn) {
 
 }
 
-function once(fn) {
-	var count = 0;
-	var _this = this;
-	return function(...args) {
-		if(_this(..args)) {
-			count++;
-		}
-	}
-}
+// function once(fn) {
+// 	var count = 0;
+// 	var _this = this;
+// 	return function(...args) {
+// 		if(_this(..args)) {
+// 			count++;
+// 		}
+// 	}
+// }
 
 function intersection(arr1, arr2) {
 	var rArr = [];
