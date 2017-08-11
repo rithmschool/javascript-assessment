@@ -163,10 +163,11 @@ describe("Library", function(){
         });
         // BONUS - implement these tests!
         it("BONUS: only adds objects created from the Book constructor function", function(){
-
+            expect(library.addBook([[], 1, 2, 3])).to.deep.equal([]);
+            expect(library.addBook([[], 1, 2, book2])).to.deep.equal([book2]);
         });
         it("BONUS: does not add duplicates", function(){
-
+            expect(library.addBook([book2, book2, book2, book3])).to.deep.equal([book2, book3]);
         });
     });
     describe("#listAuthors", function(){
