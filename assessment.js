@@ -24,12 +24,18 @@ function frequency(array, target) {
 //char 65 - 122
 // ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"].forEach((i) => log(i.charCodeAt()))
 function flipCase(string, target){
-    var str = "";
+  var str = "";
     for(var i = 0; i < string.length; i++){
-       
-   
+      if(target.toLowerCase() === str[i].toLowerCase()) {
+        if(str[i].charCodeAt(0) > 96 {
+          newStr += str[i].toUpperCase();
+      } else {
+        newStr += str[i].toLowerCase();
+      }
+    } else {
+      newStr += str[i];
     }
-    return newStr;
+  return newStr;
 }
 
 // This function accepts a string and a letter and reverses the case of all occurances of the letter in the string.
@@ -56,8 +62,7 @@ function mode(arr) {
       acc[curr] = 1;
     }
     return acc;
-  })
-  return Object.keys(k).forEach(function(x) {
+  }).keys(k).forEach(function(x) {
   	if(Math.max(x) > result){
   		result = Math.max(x)
   	}
@@ -86,7 +91,7 @@ function compact(arr) {
 // compact([0,1,2,"",NaN, false, undefined, null, "All done"]); // [1,2, "All done"]
 function partition(arr, predicate) {
   return arr.reduce(
-    function(acc, curr) {
+    (acc, curr) => {
       predicate(curr) ? acc[0].push(curr) : acc[1].push(curr);
       return acc;
     },
@@ -107,7 +112,7 @@ function isEven(num) {
 //     return letter === "b";
 // }) // [["b", "b"], ["a","c"]]
 function intersection(a1, a2) {
-  return a1.reduce(function(acc, curr) {
+  return a1.reduce((acc, curr) => {
     if (a2.includes(curr)) {
       acc.push(curr);
     }
@@ -136,7 +141,7 @@ function flip(func) {
 // flipped(10,5,2); // -13
 function once(fn) {
     var flag = true;
-    return function() {
+    return () => {
         if (flag) {
             flag = false;
             return fn(...arguments);
@@ -198,20 +203,35 @@ Library.prototype.addBook = function(list){
     function check(book){
         return book instanceof Book && this.books.includes(book);
     }
+   if(Array.isArray(list)){
+        this.books = this.books.concat(list.filter(determineIfAcceptable, this));
+    } else if(determineIfAcceptable.call(this,list)) {
+        this.books = this.books.concat(list);
+    }
+    return this.books;
 };
 
 Library.prototype.listAuthors = function(author){
-    
-
- 
+    if(author) {
+      return this.books.reduce((acc, curr) => {
+        if(acc.includes(curr.author)){
+          acc.push(curr.author);
+        }
+        return acc; 
+      }                             
+    }, []);
 };
 
 Library.prototype.sumPages = function(){
-    return this.books.reduce(function(acc,next){}
-        
+    return this.books.reduce((acc,curr) => {
+    acc += curr.pageCount
+    return acc;
+    },0);
 };
 
 Library.prototype.filterByAuthor = function(name){
-    return this.books.filter(function(book);
+    return this.books.filter((book) => {
+      return book.author === name;
+    });
 };
 
