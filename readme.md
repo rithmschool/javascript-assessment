@@ -1,6 +1,8 @@
 # JavaScript Assessment
 
-In this part you will be implementing the following functions in the `assessment.js` section:
+## Instructions
+
+Implement the following functions in the `assessment.js` file. Open `index.html` in your browser to run the tests for the functions you write in `assessment.js`. Refresh the page to re-run the tests.
 
 ### `frequency`
 
@@ -17,11 +19,12 @@ This function accepts a string and a letter and reverses the case of all occuran
 
 ```js
 flipCase('Hardy har har', 'h'); // "hardy Har Har"
+flipCase('hello world', 'o'); // "hellO wOrld"
 ```
 
 ### `multiplyEvenNumbers`
 
-This function accepts an array of numbers and returns the product of all even numbers in the array.
+This function accepts an array of numbers and returns the product of all even numbers in the array, or 0 if there are none.
 
 ```js
 multiplyEvenNumbers([2, 3, 4, 5, 6]); // 48
@@ -35,13 +38,13 @@ This function accepts an array of numbers and returns the most frequent number i
 mode([2, 4, 1, 2, 3, 3, 4, 4, 5, 4, 4, 6, 4, 6, 7, 4]); // 4
 ```
 
-### `capitalize`
+### `capitalizeWords`
 
-This function accepts a string and returns the same string with the first letter capitalized.
+This function accepts a string of words (separated by spaces) and returns the same string with the first letter of each word capitalized.
 
 ```js
-capitalize('joel'); // "Joel"
-capitalize('matt'); // "Matt"
+capitalize('matt lane'); // "Matt Lane"
+capitalize('Whiskey the dog.'); // "Whiskey The Dog."
 ```
 
 ### `compact`
@@ -98,7 +101,9 @@ flipped(10, 5, 2); // -13
 
 ### `once`
 
-This function accepts a function and returns a new function that can only be invoked once. If the function is invoked more than once, it should return `undefined`.
+This Higher Order Function accepts a function and returns a version of that function that can only be invoked once. If the function is invoked more than once, it should return `undefined`.
+
+**Hint: Use Closure.**
 
 ```js
 function add(a, b) {

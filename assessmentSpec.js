@@ -1,40 +1,41 @@
 var expect = chai.expect;
 
-describe('#frequency', function() {
+describe('frequency', function() {
   it('It returns the number of times the searchTerm appears in the array.', function() {
     var arr = ['a', 'b', 'c', 'c'];
     expect(frequency(arr, 'c')).to.equal(2);
   });
 });
 
-describe('#flipCase', function() {
+describe('flipCase', function() {
   it('It reverses the case of all occurances of the letter in the string.', function() {
     var str = 'amazing Awesome';
     expect(flipCase(str, 'a')).to.equal('AmAzing awesome');
   });
 });
 
-describe('#multiplyEvenNumbers', function() {
+describe('multiplyEvenNumbers', function() {
   it('It returns the product of all even numbers in the array', function() {
     var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     expect(multiplyEvenNumbers(arr)).to.equal(3840);
   });
 });
 
-describe('#mode', function() {
+describe('mode', function() {
   it('It returns the most frequent number in the array of numbers', function() {
     var arr = [1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5];
     expect(mode(arr)).to.equal(3);
   });
 });
 
-describe('#capitalize', function() {
-  it('It returns the same string with the first letter capitalized', function() {
-    expect(capitalize('awesome')).to.equal('Awesome');
+describe('capitalizeWords', function() {
+  it('It returns the same string with the first letter of each word capitalized', function() {
+    expect(capitalizeWords('awesome')).to.equal('Awesome');
+    expect(capitalizeWords('whiskey the dog')).to.equal('Whiskey The Dog');
   });
 });
 
-describe('#compact', function() {
+describe('compact', function() {
   it('It returns an array of values that are truthy values', function() {
     expect(compact([1, 2, 3, 4])).to.deep.equal([1, 2, 3, 4]);
   });
@@ -43,7 +44,7 @@ describe('#compact', function() {
   });
 });
 
-describe('#partition', function() {
+describe('partition', function() {
   it('It returns an array with two arrays, a truthy one and falsey one', function() {
     function isOdd(a) {
       return a % 2 !== 0;
@@ -55,7 +56,7 @@ describe('#partition', function() {
   });
 });
 
-describe('#intersection', function() {
+describe('intersection', function() {
   it('It returns an array with the values that are the same in each array', function() {
     var arr1 = [2, 3, 4];
     var arr2 = [1, 2, 3];
@@ -63,7 +64,7 @@ describe('#intersection', function() {
   });
 });
 
-describe('#flip', function() {
+describe('flip', function() {
   it('It returns another function with the arguments switched', function() {
     function subtract(a, b, c) {
       return a - b - c;
@@ -74,7 +75,7 @@ describe('#flip', function() {
   });
 });
 
-describe('#once', function() {
+describe('once', function() {
   it('It accepts a function and returns a new function that can only be invoked once', function() {
     function add(a, b) {
       return a + b;
