@@ -102,9 +102,47 @@ function mode(arr) {
   return +freqNum;
 }
 
-function capitalizeWords() {}
+// 5)
+// input: string
+// output: string
+// assumptions: only strings will be passed in
+// edge cases: if letter is already cap leave it cap
+// it should capitalize the first letter of each word in the passed in string
+// can i use a modified version of flip case?
 
-function compact() {}
+function capitalizeWords(str) {
+  // split str into an array of each word
+  let words = str.split(' ');
+  let newArr = [];
+  //console.log(words);
+  // iterate this array of words
+  for (let j = 0; j < words.length; j++) {
+    // need to turn word into array
+    var strArr = words[j].split('');
+    //console.log(strArr);
+    strArr[0] = strArr[0].toUpperCase();
+    var capWord = strArr.join('');
+    newArr.push(capWord);
+    console.log(strArr);
+  }
+  return newArr.join(' ');
+  // check the first index of each word for capitalization
+  // if it is not then cap it
+  // if it is then leave it alone
+}
+
+// input: array
+// output: array
+// it hsould return an array with all the truthy values
+// iterate through array and check if a value is truthy
+
+function compact(arr) {
+  // filter will evaluate truthi-ness is this correct?
+  // **** ask to clarify ****
+  return arr.filter(val => {
+    return val;
+  });
+}
 
 function partition() {}
 
