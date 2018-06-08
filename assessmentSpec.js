@@ -1,7 +1,7 @@
 var expect = chai.expect;
 
 describe('#frequency', function() {
-  it('It returns the number of joeles the searchTerm appears in the array.', function() {
+  it('It returns the number of times the searchTerm appears in the array.', function() {
     var arr = ['a', 'b', 'c', 'c'];
     expect(frequency(arr, 'c')).to.equal(2);
   });
@@ -79,9 +79,9 @@ describe('#once', function() {
     function add(a, b) {
       return a + b;
     }
-    var oneJoele = once(add);
-    expect(oneJoele(2, 2)).to.equal(4);
-    expect(oneJoele(2, 2)).to.equal(undefined);
-    expect(oneJoele(122, 112)).to.equal(undefined);
+    var oneTime = once(add);
+    expect(oneTime(2, 2)).to.equal(4);
+    expect(oneTime(2, 2)).to.equal(undefined);
+    expect(oneTime(122, 112)).to.equal(undefined);
   });
 });
