@@ -204,7 +204,9 @@ function intersection(arr1, arr2) {
 
 function flip(fn) {
   // how would i flip the parameters of the passed in function???
-  console.log(fn);
+  return function(...args) {
+    return fn(...args.reverse());
+  };
 }
 
 // 10)
@@ -213,8 +215,11 @@ function flip(fn) {
 // output: the function call but only once
 // it should only be invoked once
 function once(fn) {
-  var foo = fn;
-  return function inner() {
-    return foo;
+  var fnCount = 0;
+  return function(...args) {
+    if (fnCount === 0) {
+      fnCount++;
+      return fn(...args);
+    }
   };
 }
