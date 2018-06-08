@@ -1,6 +1,8 @@
 // Write your solutions here:
 
-function frequency() {}
+function frequency() {
+  console.log('hello pull request');
+}
 
 function flipCase() {}
 
