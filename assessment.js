@@ -135,7 +135,7 @@ function capitalizeWords(str) {
 // output: array
 // it hsould return an array with all the truthy values
 // iterate through array and check if a value is truthy
-
+// 6)
 function compact(arr) {
   // filter will evaluate truthi-ness is this correct?
   // **** ask to clarify ****
@@ -143,10 +143,57 @@ function compact(arr) {
     return val;
   });
 }
+// 7)
+// input: array
+// output: array
+// it should take in an array and a cb
+// with the call back it will evaluate something and if it is true
+// then it puts it in the left array, if not right array
+// then puts both array into a final array
+// almost like a filter function
+// *** ask if we can use map or reduce? ***
 
-function partition() {}
+function partition(arr, cb) {
+  // main array
+  // left arr
+  // right arr
+  let mainArr = [[], []]; // main[0], main[1]
+  // iterate through passed in arr
+  for (let val of arr) {
+    // check if val passes cb
+    if (cb(val)) {
+      mainArr[0].push(val);
+    } else {
+      mainArr[1].push(val);
+    }
+    // if it does put in left arr
+    // if it does not put in right arr
+  }
+  return mainArr;
+}
 
-function intersection() {}
+//8)
+// input: array, array
+// output: array
+// it should take all the values that are the same in each array
+// and return that in an array
+// iterate through both arrays and check values?
+// use indexof?
+
+function intersection(arr1, arr2) {
+  // storage array
+  let newArr = [];
+  // iterate through arr for val
+  for (let val of arr1) {
+    // use indexof to check if val is there
+    if (arr2.indexOf(val) > -1) {
+      newArr.push(val);
+    }
+    // push to new arr if it is
+  }
+  // return new arr
+  return newArr;
+}
 
 /** BONUS PROBLEMS BELOW */
 
