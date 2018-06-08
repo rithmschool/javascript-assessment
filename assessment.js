@@ -108,8 +108,19 @@ function intersection(arr1, arr2) {
 
 // flipped(10, 5, 2); // -13
 function flip(callback) {
-  return 
-  })
+  function subtract(a, b, c) {
+    return a - b - c;
+  }
+
+  function flip(callback) {
+    console.log(callback());
+    //     let newArgs= [args].reverse();
+    //     console.log(newArgs)
+  }
+
+  var flipped = flip(subtract);
+
+  flipped(10, 5, 2);
 }
 
 function once() {}
