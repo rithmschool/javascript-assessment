@@ -1,16 +1,67 @@
-// Write your solutions here:
+function frequency(arr, val) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == val) {
+      count++;
+    }
+  }
+  return count;
+}
 
-function frequency() {}
+function flipCase(str, ltr) {
+  let arr = str.split('');
+  let newStr = '';
+  for (let char of arr) {
+    if (char.toLowerCase() === ltr) {
+      char === char.toUpperCase()
+        ? (newStr += char.toLowerCase())
+        : (newStr += char.toUpperCase());
+    } else newStr += char;
+  }
+  return newStr;
+}
 
-function flipCase() {}
+function multiplyEvenNumbers(arr) {
+  return arr.reduce(function(acc, nextVal) {
+    if (nextVal % 2 === 0) {
+      acc *= nextVal;
+    }
+    return acc;
+  });
+}
 
-function multiplyEvenNumbers() {}
+// function mode(arr) {
+//   let countObj = {};
+//   let mostFreq = {0:-Infinity};
+//   let current = {0:0};
+//   for (let num of arr) {
+//     countObj[num] ? countObj[num]++ : (countObj[num] = 1);
+//   }
+//   for (let key in countObj) {
+//     if (current[] > mostFreq[] {
+//       mostFreq = current;
+//     }
+//     current = {key: countObj[key]};
+//   }
+//   return mostFreq[];
+// }
 
-function mode(arr) {}
+function capitalizeWords(str) {
+  let arr = str.split('');
+  let newStr = '';
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][0] || arr[i - 1] === ' ') {
+      newStr += arr[i].toUpperCase();
+    } else newStr += arr[i];
+  }
+  return newStr;
+}
 
-function capitalizeWords() {}
-
-function compact() {}
+function compact(arr) {
+  return arr.filter(val => {
+    return val === true;
+  });
+}
 
 function partition() {}
 
