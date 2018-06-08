@@ -50,8 +50,7 @@ function mode(arr) {
 }
 
 function capitalizeWords(str) {
-  let splitStr = str.split(' ');
-  let upperCaseSplitStr = splitStr.map(word => {
+  let upperCaseSplitStr = str.split(' ').map(word => {
     let splitWord = word.split('');
     splitWord.splice(0, 1, splitWord[0].toUpperCase());
     return splitWord.join('');
