@@ -197,6 +197,24 @@ function intersection(arr1, arr2) {
 
 /** BONUS PROBLEMS BELOW */
 
-function flip() {}
+// 9)
+// input: function
+// output: arguments of function flipped???
+// wut haha
 
-function once() {}
+function flip(fn) {
+  // how would i flip the parameters of the passed in function???
+  console.log(fn);
+}
+
+// 10)
+// closure problem
+// input: function
+// output: the function call but only once
+// it should only be invoked once
+function once(fn) {
+  var foo = fn;
+  return function inner() {
+    return foo;
+  };
+}
