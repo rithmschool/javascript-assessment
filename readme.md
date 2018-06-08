@@ -4,6 +4,10 @@
 
 Implement the following functions in the `assessment.js` file. Open `index.html` in your browser to run the tests for the functions you write in `assessment.js`. Refresh the page to re-run the tests.
 
+---
+
+## Problems
+
 ### `frequency`
 
 This function accepts an array and a searchTerm (this will always be a primitive value) and returns the number of times the searchTerm appears in the array.
