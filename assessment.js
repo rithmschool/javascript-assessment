@@ -43,20 +43,14 @@ function mode(arr) {
 }
 
 function capitalizeWords(str) {
-  let arr = str.split('');
-  let newStr = '';
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i][0] || arr[i - 1] === ' ') {
-      newStr += arr[i].toUpperCase();
-    } else newStr += arr[i];
-  }
-  return newStr;
+  return str
+    .split(' ')
+    .map(word => word.slice(0, 1).toUpperCase() + word.slice(1))
+    .join(' ');
 }
 
 function compact(arr) {
-  return arr.filter(val => {
-    return val === true;
-  });
+  return arr.filter(val => val);
 }
 
 function partition() {}
