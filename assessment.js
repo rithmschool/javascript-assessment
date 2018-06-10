@@ -30,21 +30,17 @@ function multiplyEvenNumbers(arr) {
   });
 }
 
-// function mode(arr) {
-//   let countObj = {};
-//   let mostFreq = {0:-Infinity};
-//   let current = {0:0};
-//   for (let num of arr) {
-//     countObj[num] ? countObj[num]++ : (countObj[num] = 1);
-//   }
-//   for (let key in countObj) {
-//     if (current[] > mostFreq[] {
-//       mostFreq = current;
-//     }
-//     current = {key: countObj[key]};
-//   }
-//   return mostFreq[];
-// }
+function mode(arr) {
+  let countObj = {};
+  let highestFreqNum = arr[0];
+  for (let num of arr) {
+    countObj[num] ? countObj[num]++ : (countObj[num] = 1);
+    if (countObj[highestFreqNum] < countObj[num]) {
+      highestFreqNum = num;
+    }
+  }
+  return highestFreqNum;
+}
 
 function capitalizeWords(str) {
   let arr = str.split('');
