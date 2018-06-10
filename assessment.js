@@ -53,9 +53,23 @@ function compact(arr) {
   return arr.filter(val => val);
 }
 
-function partition() {}
+function partition(arr, cb) {
+  return arr.reduce(
+    (acc, nextVal) => {
+      if (cb(nextVal)) {
+        acc[0].push(nextVal);
+      } else acc[1].push(nextVal);
+      return acc;
+    },
+    [[], []]
+  );
+}
 
-function intersection() {}
+function intersection(arr1, arr2) {
+  return arr1.filter(val => {
+    return arr2.includes(val);
+  });
+}
 
 /** BONUS PROBLEMS BELOW */
 
